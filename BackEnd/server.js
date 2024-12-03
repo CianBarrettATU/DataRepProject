@@ -1,25 +1,64 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const app = express();
 const port = 4000;
 
 const cors = require('cors');
-const { toBeInTheDOM } = require('@testing-library/jest-dom/dist/matchers');
+app.use(cors());
 
-mongoose.connect('mongodb+srv://admin:<db_password>@cianscluster.qgdvl.mongodb.net/?retryWrites=true&w=majority&appName=cianscluster');
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json());
 
-const songSchema = new mongoose.Schema({
+const mockGames = [
+    {
+        title: "The Legend of Zelda",
+        year: "1986",
+        developer: "Nintendo",
+        poster: "https://example.com/zelda-poster.jpg"
+    },
+    {
+        title: "Super Mario Bros.",
+        year: "1985",
+        developer: "Nintendo",
+        poster: "https://example.com/mario-poster.jpg"
+    },
+    {
+        title: "Minecraft",
+        year: "2011",
+        developer: "Mojang Studios",
+        poster: "https://example.com/minecraft-poster.jpg"
+    }
+];
+
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb+srv://admin:admin@cianscluster.qgdvl.mongodb.net/');
+
+const gameSchema = new mongoose.Schema({
    title: String,
-   artist: String,
+   year: String,
+   developer: String,
+   poster: String
 });
 
 //test
-const Song = mongoose.model('Song', songSchema);
+const gameModel = mongoose.model('Game', gameSchema);
+
+app.get('/api/games', async (req, res)=> {
+    const games = await gameModel.find({});
+    res.status(200).json({movies})
+});
+
+app.post('/api/games', async (req, res)=>{
+    console.log(req.body.title);
+    const {title, year, developer, poster} = req.body;
+
+    const newGame = new gameModel({title, year, developer, poster});
+    await newGame.save();
+
+    res.status(201).json({"message":"game added!",Game:newGame});
+})
 
 app.listen(port, ()=> {
     console.log(`runnning on http://localhost:${port}`);
 });
-
-app.post('/api/songs', async (req, res)=> {
-
-})
