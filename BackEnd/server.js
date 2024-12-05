@@ -46,7 +46,7 @@ const gameModel = mongoose.model('Game', gameSchema);
 
 app.get('/api/games', async (req, res)=> {
     const games = await gameModel.find({});
-    res.status(200).json({movies})
+    res.status(200).json({games})
 });
 
 app.post('/api/games', async (req, res)=>{
