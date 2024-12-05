@@ -26,6 +26,7 @@ const GameItem = (props)=>{
                 <footer>{props.mygame.developer}</footer>
                 <Button variant="danger" onClick={handleDelete}>Delete</Button>
               </Card.Body>
+              <Link className="btn btn-primary" to={"/edit/"+ props.mygame._id}>Edit</Link>
             </Card>
         </div>
     );

@@ -5,31 +5,16 @@ const port = 4000;
 const cors = require('cors');
 app.use(cors());
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
-
-const mockGames = [
-    {
-        title: "The Legend of Zelda",
-        year: "1986",
-        developer: "Nintendo",
-        poster: "https://example.com/zelda-poster.jpg"
-    },
-    {
-        title: "Super Mario Bros.",
-        year: "1985",
-        developer: "Nintendo",
-        poster: "https://example.com/mario-poster.jpg"
-    },
-    {
-        title: "Minecraft",
-        year: "2011",
-        developer: "Mojang Studios",
-        poster: "https://example.com/minecraft-poster.jpg"
-    }
-];
-
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://admin:admin@cianscluster.qgdvl.mongodb.net/');
@@ -48,6 +33,16 @@ app.get('/api/games', async (req, res)=> {
     const games = await gameModel.find({});
     res.status(200).json({games})
 });
+
+app.get('api/game/:id', async (req, res)=>{
+    const game = await gameModel.findById(req.params.id);
+    res.json(game);
+})
+
+app.put('/api/game/:id', async (req, res)=>{
+    const game = await gameModel.findByIdAndUpdate(req.params.id, req.body, {new:true});
+    res.send(game);
+})
 
 app.post('/api/games', async (req, res)=>{
     console.log("added: ",req.body.title);
