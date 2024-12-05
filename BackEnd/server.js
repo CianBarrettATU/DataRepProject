@@ -50,7 +50,7 @@ app.get('/api/games', async (req, res)=> {
 });
 
 app.post('/api/games', async (req, res)=>{
-    console.log(req.body.title);
+    console.log("added: ",req.body.title);
     const {title, year, developer, poster} = req.body;
 
     const newGame = new gameModel({title, year, developer, poster});
@@ -61,4 +61,10 @@ app.post('/api/games', async (req, res)=>{
 
 app.listen(port, ()=> {
     console.log(`runnning on http://localhost:${port}`);
+})
+
+app.delete('/api/game/:id', async(req, res) => {
+    console.log("deleting game w/ id:", req.params.id);
+    const game = await gameModel.findByIdAndDelete(req.params.id);
+    res.status(200).send({message: "game deleted", game});
 });
