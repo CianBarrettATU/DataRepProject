@@ -27,6 +27,7 @@ const GameItem = (props)=>{
                 <Button variant="danger" onClick={handleDelete}>Delete</Button>
               </Card.Body>
               <Link className="btn btn-primary" to={"/edit/"+ props.mygame._id}>Edit</Link>
+              <Link className="btn btn-secondary" to={"/rating/"+ props.mygame._id}>Rate</Link>
             </Card>
         </div>
     );

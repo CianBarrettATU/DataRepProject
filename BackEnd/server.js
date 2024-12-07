@@ -23,7 +23,8 @@ const gameSchema = new mongoose.Schema({
    title: String,
    year: String,
    developer: String,
-   poster: String
+   poster: String,
+   rating: String
 });
 
 //test
@@ -34,7 +35,7 @@ app.get('/api/games', async (req, res)=> {
     res.status(200).json({games})
 });
 
-app.get('api/game/:id', async (req, res)=>{
+app.get('/api/game/:id', async (req, res)=>{
     const game = await gameModel.findById(req.params.id);
     res.json(game);
 })
@@ -46,9 +47,9 @@ app.put('/api/game/:id', async (req, res)=>{
 
 app.post('/api/games', async (req, res)=>{
     console.log("added: ",req.body.title);
-    const {title, year, developer, poster} = req.body;
+    const {title, year, developer, poster, rating} = req.body;
 
-    const newGame = new gameModel({title, year, developer, poster});
+    const newGame = new gameModel({title, year, developer, poster, rating});
     await newGame.save();
 
     res.status(201).json({"message":"game added!",Game:newGame});

@@ -5,6 +5,7 @@ import Content from './components/content';
 import Create from './components/create';
 import Read from './components/read';
 import Edit from './components/edit';
+import Rating from './components/rating';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/create" element={<Create />}/>
       <Route path="/read" element={<Read />}/>
       <Route path="/edit/:id" element={<Edit/>}/>
+      <Route path="rating/:id" element={<Rating/>}/>
     </Routes>
    </Router> 
   );

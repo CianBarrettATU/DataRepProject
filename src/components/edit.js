@@ -12,13 +12,13 @@ const Edit = () => {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        axios.get('http://localhost:4000/api/game' + id)
+        axios.get('http://localhost:4000/api/game/' + id)
         .then((res)=>{
-            console.log("edited"+ res.data);
+            console.log("got"+ res.data);
             setTitle(res.data.title);
-            setYear(res.data.title);
-            setDeveloper(res.data.title);
-            setPoster(res.data.title);
+            setYear(res.data.year);
+            setDeveloper(res.data.developer);
+            setPoster(res.data.poster);
         })
         .catch((err)=>{console.log(err)});
     },[id]);
@@ -51,7 +51,7 @@ const Edit = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Edit Game Title</label>
+                    <label>Edit Game Year</label>
                     <input type="text"
                         className="form-control"
                         value={year}
@@ -59,7 +59,7 @@ const Edit = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Edit Game Title</label>
+                    <label>Edit Game Developer</label>
                     <input type="text"
                         className="form-control"
                         value={developer}
@@ -67,7 +67,7 @@ const Edit = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Edit Game Title</label>
+                    <label>Edit Game Poster</label>
                     <input type="text"
                         className="form-control"
                         value={poster}
