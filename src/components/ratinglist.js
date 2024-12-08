@@ -18,7 +18,11 @@ const RatingList = () => {
 
     return(
         <Card>
-            <Games myGames={games}/>
+            <Card.Body>
+                {games.map((game)=> (
+                    <p>{game.title}</p>
+                ))}
+            </Card.Body>
         </Card>
     )
 }
