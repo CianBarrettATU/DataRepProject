@@ -18,16 +18,19 @@ const GameItem = (props)=>{
 
     return(
         <div>
-            <Card>
-              <Card.Header>{props.mygame.title}</Card.Header>  
+            <Card style={{margin: '20px', backgroundColor: '#1DB954', border: '2px solid black', display: 'flex', flexDirection: 'column', alignItems: 'left'}}>
+              <Card.Header><h1>{props.mygame.title}</h1></Card.Header>  
               <Card.Body>
-                <img src={props.mygame.poster} alt={props.mygame.title} />
-                <footer>{props.mygame.year}</footer>
-                <footer>{props.mygame.developer}</footer>
-                <Button variant="danger" onClick={handleDelete}>Delete</Button>
+                <img src={props.mygame.poster} alt={props.mygame.title} style={{borderRadius: '5px', border: '3px solid black'}}/>
+                <h3>{props.mygame.year}</h3>
+                <h3>{props.mygame.developer}</h3>
+                <Button variant="danger" onClick={handleDelete} style={{border: '2px solid black'}}>Delete</Button>
               </Card.Body>
-              <Link className="btn btn-primary" to={"/edit/"+ props.mygame._id}>Edit</Link>
-              <Link className="btn btn-secondary" to={"/rating/"+ props.mygame._id}>Rate</Link>
+              <div style={{display: 'flex', justifyContent: 'left', gap: '10px', padding: '10px'}}>
+                <Link className="btn btn-primary d-inline-block" to={"/edit/"+ props.mygame._id} style={{border: '2px solid black'}}>Edit</Link>
+                <Link className="btn btn-secondary" to={"/rating/"+ props.mygame._id} style={{border: '2px solid black'}}>Rate</Link>
+              </div>
+              
             </Card>
         </div>
     );
