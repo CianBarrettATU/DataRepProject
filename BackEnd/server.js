@@ -61,6 +61,16 @@ app.post('/api/games', async (req, res)=>{
     res.status(201).json({"message":"game added!",Game:newGame});
 })
 
+//post game review by id
+app.post('/api/game/:id/review', async (req, res)=> {
+    const {content, recommend} = req.body;
+    const game = await gameModel.findById(req.params.id);
+
+    game.review.push({content, recommend});
+    await game.save();
+    res.status(200).send({message: "review sent", game});
+})
+
 app.listen(port, ()=> {
     console.log(`runnning on http://localhost:${port}`);
 })

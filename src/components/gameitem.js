@@ -28,6 +28,7 @@ const GameItem = (props)=>{
               <div style={{display: 'flex', justifyContent: 'left', gap: '10px', padding: '10px'}}>
                 <Link className="btn btn-primary d-inline-block" to={"/edit/"+ props.mygame._id} style={{border: '2px solid black'}}>Edit</Link>
                 <Link className="btn btn-secondary" to={"/rating/"+ props.mygame._id} style={{border: '2px solid black'}}>Rate</Link>
+                <Link className="btn btn-primary d-inline-block" to={"/review/"+ props.mygame._id} style={{border: '2px solid black'}}>Review</Link>
               </div>
               
             </Card>

@@ -12,6 +12,7 @@ const NavigationBar = () => {
                     <Nav.Link href="/create">Create</Nav.Link>
                     <Nav.Link href="/read">Read</Nav.Link>
                     <Nav.Link href="/rating">Ratings</Nav.Link>
+                    <Nav.Link href="/review">Review</Nav.Link>
                 </Nav>
             </Container>
         </Navbar>

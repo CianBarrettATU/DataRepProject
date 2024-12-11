@@ -7,6 +7,7 @@ import Read from './components/read';
 import Edit from './components/edit';
 import Rating from './components/rating';
 import RatingList from './components/ratinglist';
+import Review from './components/review';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/edit/:id" element={<Edit/>}/>
       <Route path="rating/:id" element={<Rating/>}/>
       <Route path="rating" element={<RatingList/>}/>
+      <Route path="/review/:id" element={<Review/>}/>
     </Routes>
    </Router> 
   );
