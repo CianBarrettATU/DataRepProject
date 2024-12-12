@@ -19,10 +19,10 @@ const Create = () => {
     }
     return (
         <div>
-            <h1>Create Component</h1>
-            <form onSubmit={handleSubmit}>
+            <h2 style={{padding: '15px', color: 'white'}}> Add a game to the DataBase:</h2>
+            <form onSubmit={handleSubmit} style={{padding: '25px'}}>
                 <div className="form-group">
-                    <label>Add game title:</label>
+                    <label style={{color: 'white'}}>Add Game Title:</label>
                     <input type="text"
                         className="form-control"
                         value={title}
@@ -30,28 +30,28 @@ const Create = () => {
                     />
                 </div>
                 <div>
-                    <label>Add game year:</label>
+                    <label style={{color: 'white'}}>Add Game Year:</label>
                     <input type="text"
                         className="form-control"
                         value={year}
                         onChange={(e) => {setYear(e.target.value)}}/>
                 </div>
                 <div>
-                    <label>Add game developer</label>
+                    <label style={{color: 'white'}}>Add Game Developer:</label>
                     <input type="text"
                         className="form-control"
                         value={developer}
                         onChange={(e) => {setDeveloper(e.target.value)}}/>
                 </div>
                 <div>
-                    <label>Add game poster</label>
+                    <label style={{color: 'white'}}>Add Game Poster:</label>
                     <input type="text"
                         className="form-control"
                         value={poster}
                         onChange={(e) => {setPoster(e.target.value)}}/>
                 </div> 
                 <div>
-                    <input type="submit" value="add game"></input>
+                    <input style={{padding: '10px', marginTop: '15px', borderRadius: '10px',}} type="submit" value="Add Game"></input>
                 </div>
             </form>
         </div>

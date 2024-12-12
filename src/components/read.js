@@ -21,7 +21,6 @@ const Read = () => {
 
     return(
         <div>
-            <h1>read Component</h1>
             <Games myGames={data} ReloadData={ReloadData}/>
         </div>
     );

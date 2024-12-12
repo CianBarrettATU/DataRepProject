@@ -9,6 +9,7 @@ import Rating from './components/rating';
 import RatingList from './components/ratinglist';
 import Review from './components/review';
 import ReviewList from './components/reviewlist';
+import './App.css';
 
 function App() {
   return (

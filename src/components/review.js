@@ -40,11 +40,11 @@ const Review = () => {
     }
 
     return(
-        <div>
+        <div style={{padding: '15px'}}>
             <h1>Review {game.title}</h1>
             <form onSubmit={handleReview}>
                 <div className="form-group">
-                    <label>Write your review</label>
+                    <label>Your review:</label>
                     <textarea 
                         className="form-control" 
                         value={content}
@@ -53,8 +53,8 @@ const Review = () => {
                         required
                     />
                 </div>
-                <div className="form-group">
-                    <label>Write your review</label>
+                <div className="form-group" >
+                    <label>Would you recommend playing?</label>
                     <select
                         className="form-control" 
                         value={recommend}
@@ -66,7 +66,7 @@ const Review = () => {
                         <option value="No">No</option>
                     </select>   
                 </div>
-                <button type="submit" className="btn btn-primary">Submit Review</button>
+                <button type="submit" className="btn btn-primary" style={{marginTop: '15px'}}>Submit Review</button>
             </form>
         </div>
     );
