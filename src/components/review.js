@@ -48,10 +48,10 @@ const Review = () => {
 
     return(
         <div style={{padding: '15px'}}>
-            <h1>Review {game.title}</h1>
+            <h1 style={{color: 'white'}}>Review {game.title}</h1>
             <form onSubmit={handleReview}>
                 <div className="form-group">
-                    <label>Your review:</label>
+                    <label style={{color: 'white'}}>Your review:</label>
                     <textarea 
                         className="form-control" 
                         value={content}
@@ -61,7 +61,7 @@ const Review = () => {
                     />
                 </div>
                 <div className="form-group" >
-                    <label>Would you recommend playing?</label>
+                    <label style={{color: 'white'}}>Would you recommend playing?</label>
                     <select
                         className="form-control" 
                         value={recommend}
