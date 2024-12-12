@@ -5,6 +5,7 @@ const port = 4000;
 const cors = require('cors');
 app.use(cors());
 
+//cors headers
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
@@ -12,13 +13,16 @@ app.use(function(req, res, next) {
   next();
 });
 
+//middleware to handle urls and json payloads
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
 
+//mongoose connects to mongoDB
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://admin:admin@cianscluster.qgdvl.mongodb.net/');
 
+//defining game schema
 const gameSchema = new mongoose.Schema({
    title: String,
    year: String,
@@ -33,24 +37,28 @@ const gameSchema = new mongoose.Schema({
    ]
 });
 
-//test
+//model for game collection
 const gameModel = mongoose.model('Game', gameSchema);
 
+//get req to get all games
 app.get('/api/games', async (req, res)=> {
     const games = await gameModel.find({});
     res.status(200).json({games})
 });
 
+//route to get specific game by id
 app.get('/api/game/:id', async (req, res)=>{
     const game = await gameModel.findById(req.params.id);
     res.json(game);
 })
 
+//updating game by id
 app.put('/api/game/:id', async (req, res)=>{
     const game = await gameModel.findByIdAndUpdate(req.params.id, req.body, {new:true});
     res.send(game);
 })
 
+//post req to create new game
 app.post('/api/games', async (req, res)=>{
     console.log("added: ",req.body.title);
     const {title, year, developer, poster, rating, review} = req.body;
@@ -72,6 +80,7 @@ app.post('/api/game/:id/review', async (req, res)=> {
     res.status(200).send({message: "review sent", game});
 })
 
+//starts the server and listens at port 4000
 app.listen(port, ()=> {
     console.log(`runnning on http://localhost:${port}`);
 })

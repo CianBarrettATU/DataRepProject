@@ -4,10 +4,15 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 
 const GameItem = (props)=>{
+
+    //handles deleting the game
     const handleDelete = (e) => {
       e.preventDefault();
+
+      //sends delete req to db
       axios.delete('http://localhost:4000/api/game/' + props.mygame._id)
       .then(() => {
+          //calls reload refresh the data
           props.Reload();
       })
       .catch((error) =>{

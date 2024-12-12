@@ -1,14 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ReviewList = () => {
-    const { id } = useParams
+
+    //state variable to store list of games
     const [games, setGames] = useState([]);
     const navigate = useNavigate();
 
+    
     useEffect(() => {
+        //get request made on all games
         axios.get("http://localhost:4000/api/games")
             .then((res) => {
                 setGames(res.data.games);
@@ -18,6 +21,7 @@ const ReviewList = () => {
             });
     }, []);
 
+    //function to calculate percentage of positive recommendations
     const calculateRecommendations = (review) => {
         const positiveRec = review.filter((review)=> review.recommend === "Yes").length;
         return((positiveRec / review.length) * 100).toFixed(2);

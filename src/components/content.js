@@ -1,8 +1,6 @@
 import { Card, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-
-
 const Content = ()=>{
     const navigate = useNavigate();
     
@@ -22,6 +20,8 @@ const Content = ()=>{
                 <div style={{ textAlign: 'center', marginTop: '30px' }}>
                         <Button
                             style={{ padding: '10px 20px', backgroundColor: '#1DB954', border: 'none', color: 'white', borderRadius: '5px' }}
+
+                            //navigate hook called on user click
                             onClick={() => navigate('/create')}
                         >
                             Get Started

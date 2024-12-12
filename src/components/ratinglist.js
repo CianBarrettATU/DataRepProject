@@ -6,6 +6,7 @@ const RatingList = () => {
     const [games, setGames] = useState([]);
 
     useEffect(() => {
+        //makes get req  to fetch games.
         axios.get("http://localhost:4000/api/games")
             .then((res) => {
                 setGames(res.data.games);
@@ -17,7 +18,10 @@ const RatingList = () => {
 
     return (
         <div>
+            
             {games.map((game) => (
+                //maps through game array
+                //displays specified game details and rating
                 <Card key={game._id} style={{margin: '20px', border: '2px solid black', backgroundColor: '#1DB954'}}>
                     <Card.Body style={{display: 'flex', alignItems: 'center'}}>
                         <img src={game.poster} style={{borderRadius: '5px', border: '3px solid black'}}/>

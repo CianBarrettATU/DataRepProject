@@ -4,10 +4,13 @@ import { useParams } from "react-router-dom";
 
 const Rating = () => {;
     const {id} = useParams('');
+
+    //state variables
     const [game, setGame] = useState('');
     const [rating, setRating] = useState('');
 
     useEffect(()=> {
+        //get req on specific game id
         axios.get('http://localhost:4000/api/game/' + id)
         .then((res)=>{
            setGame(res.data); 
@@ -17,16 +20,18 @@ const Rating = () => {;
         })
     },[id]);
 
+    //handles rating of game
     const handleRating = (e) => {
         e.preventDefault();
 
+        //saves game and its rating to 'ratedGame' object
         const ratedGame = {game, rating};
         console.log(ratedGame);
 
+        //sends put req to db with rated game
         axios.put('http://localhost:4000/api/game/'+id, ratedGame)
         .then((res)=>{
             console.log("edited:"+ res.data);
-            //TODO: maybe navigate
         })
         .catch((err)=>{
             console.log(err);

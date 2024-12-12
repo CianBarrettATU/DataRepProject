@@ -3,16 +3,19 @@ import { useState } from "react";
 
 const Create = () => {
 
+    //state variables for fields in the form
     const [title, setTitle] = useState('');
     const [year, setYear] = useState('');
     const [developer, setDeveloper] = useState('');
     const [poster, setPoster] = useState('');
 
+    //handle for submission
     const handleSubmit = (e) => {
-        e.preventDefault();
-        const game = { title, year, developer, poster };
+        e.preventDefault(); //prevents page reload on submit
+        const game = { title, year, developer, poster }; //game  object
         console.log(game);
 
+        //post req to backend w/ game data
         axios.post('http://localhost:4000/api/games', game)
             .then((res) => { console.log(res.data) })
             .catch();

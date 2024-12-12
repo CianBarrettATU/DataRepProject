@@ -5,12 +5,15 @@ import { useParams, useNavigate } from "react-router-dom";
 const Review = () => {
 
     const { id } = useParams('');
+
+    //review state variables
     const [game, setGame ] = useState('');
     const [content, setContent] = useState('');
     const [recommend, setRecommend] = useState('');
 
     const navigate = useNavigate();
 
+    //fetches game details from backend by game id
     useEffect(() => {
         axios.get(`http://localhost:4000/api/game/${id}`)
         .then((res)=> {
@@ -20,15 +23,19 @@ const Review = () => {
             console.log(err);
         });
     }, [id]);
-    
-     const handleReview = (e) => {
+
+    //handles review submission
+    const handleReview = (e) => {
         e.preventDefault();
 
+        //saves content and recommendation values to a review object
         const newReview = { content, recommend };
 
+        //makes post req for id specific game
         axios.post(`http://localhost:4000/api/game/${id}/review`, newReview)
         .then((res) => {
             console.log("review added:", res.data)
+            //clears review form                
             setContent("");
             setRecommend("");
             console.log("navigating to read")

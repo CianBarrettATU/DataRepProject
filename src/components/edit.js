@@ -4,17 +4,25 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Edit = () => {
+    //extracts id form url
     const {id} = useParams();
+
+    //state variables that holds game details
     const[title, setTitle] = useState('');
     const[year, setYear] = useState('');
     const[developer, setDeveloper] = useState('');
     const[poster, setPoster] = useState('');
+
+    //react hook for navigating pages
     const navigate = useNavigate();
 
+    //fetch game details when id chagnes
     useEffect(()=>{
         axios.get('http://localhost:4000/api/game/' + id)
         .then((res)=>{
             console.log("got"+ res.data);
+
+            //updates components state
             setTitle(res.data.title);
             setYear(res.data.year);
             setDeveloper(res.data.developer);
@@ -23,11 +31,13 @@ const Edit = () => {
         .catch((err)=>{console.log(err)});
     },[id]);
 
+    //handles form submission to edit game details
     const handleSubmit = (e) => {
         e.preventDefault();
         const game = {title,year,developer,poster};
         console.log(game);
 
+        //sends put req to update game on server
         axios.put('http://localhost:4000/api/game/'+id, game)
         .then((res)=>{
             console.log("Edited: "+res.data);

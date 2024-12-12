@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Read = () => {
+    //stores list of games
     const [data, setData] = useState([]);
 
+    //function to load game data.
     const ReloadData = ()=>{
         axios.get('http://localhost:4000/api/games')
         .then((response) => {
@@ -15,6 +17,7 @@ const Read = () => {
             console.log(error);
         });
     }
+    //loads list when read is rendered
     useEffect(()=>{
         ReloadData();
     },[]);
