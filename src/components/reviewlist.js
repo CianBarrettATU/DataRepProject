@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ReviewList = () => {
+    const { id } = useParams
     const [games, setGames] = useState([]);
-    
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get("http://localhost:4000/api/games")
@@ -28,7 +30,7 @@ const ReviewList = () => {
                     <Card.Body style={{display: 'flex', alignItems: 'flex-start'}}>
                         <div>
                             <img src={game.poster} style={{borderRadius: '5px', border: '3px solid black'}}/>
-                            <Button onClick={navigate('/review')} style={{padding: '15px', marginTop: '20px', border: '3px solid black'}}> Review </Button>
+                            <Button style={{marginTop: '15px', border: '3px solid black'}}  onClick={() =>navigate(`/review/${game._id}`)}> Review </Button>
                         </div>
                         <div>
                             <h3 style={{padding: '15px'}}>{game.title}</h3>
