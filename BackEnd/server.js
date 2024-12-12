@@ -65,6 +65,7 @@ app.post('/api/games', async (req, res)=>{
 app.post('/api/game/:id/review', async (req, res)=> {
     const {content, recommend} = req.body;
     const game = await gameModel.findById(req.params.id);
+    console.log(req.body);
 
     game.review.push({content, recommend});
     await game.save();

@@ -59,7 +59,9 @@ const Review = () => {
                         className="form-control" 
                         value={recommend}
                         onChange={(e) => setRecommend(e.target.value)}
+                        required
                         >
+                        <option value="" disabled>Select Your Recommendation</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>   
