@@ -50,42 +50,46 @@ const Edit = () => {
 
     return(
         <div>
-            <h3>edit</h3>
+            <h3 style={{padding: '15px', color: 'white'}}>Edit Game Details</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label>Edit Game Title</label>
+                    <label style={{padding: '15px', color: 'white'}}>Edit Game Title:</label>
                     <input type="text"
                         className="form-control"
                         value={title}
                         onChange={(e)=>{setTitle(e.target.value)}}
+                        style={{margin: '15px'}}
                     />
                 </div>
                 <div className="form-group">
-                    <label>Edit Game Year</label>
+                    <label style={{padding: '15px', color: 'white'}}>Edit Game Year:</label>
                     <input type="text"
                         className="form-control"
                         value={year}
                         onChange={(e)=>{setYear(e.target.value)}}
+                        style={{margin: '15px'}}
                     />
                 </div>
                 <div className="form-group">
-                    <label>Edit Game Developer</label>
+                    <label style={{margin: '15px', color: 'white'}}>Edit Game Developer:</label>
                     <input type="text"
                         className="form-control"
                         value={developer}
                         onChange={(e)=>{setDeveloper(e.target.value)}}
+                        style={{margin: '15px'}}
                     />
                 </div>
                 <div className="form-group">
-                    <label>Edit Game Poster</label>
+                    <label style={{padding: '15px', color: 'white'}}>Edit Game Poster:</label>
                     <input type="text"
                         className="form-control"
                         value={poster}
                         onChange={(e)=>{setPoster(e.target.value)}}
+                        style={{margin: '15px'}}
                     />
                 </div>
                 <div>
-                    <input type="submit" value="Edit Game"></input>
+                    <input style={{margin: '15px'}}type="submit" value="Edit Game"></input>
                 </div>
             </form>
         </div>
