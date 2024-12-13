@@ -42,7 +42,7 @@ const Rating = () => {;
         <div>
             <form onSubmit={handleRating}>
                 <div className="form-group">
-                    <label>Game Rating:</label>
+                    <label style={{padding: '15px', color:'white'}}>Game Rating:</label>
                     <input
                         type="number"
                         min="1"
@@ -52,9 +52,10 @@ const Rating = () => {;
                         value={rating}
                         onChange={(e)=> setRating(e.target.value)}
                         placeholder="Rate the game from 1-10"
+                        style={{margin: '15px'}}
                     />
                 </div>
-                <button type="submit" className="btn btn-primary">Submit Rating</button>
+                <button style={{margin: '15px'}} type="submit" className="btn btn-primary">Submit Rating</button>
             </form>
         </div>
     );
